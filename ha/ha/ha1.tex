@@ -21,6 +21,15 @@ $b \in (B \cup \{undefined\})$, такой что $(a, b) \in G$.
 
 \textbf{Решение.} 
 
+$A$ вкладывается в $B$ $\Rightarrow \exists f:A\rightarrow B - $ инъекция.
+
+$B$ вкладывается в $C$ $\Rightarrow \exists g:B\rightarrow C - $ инъекция.
+
+Покажем, что композиция $g \circ f : A\rightarrow C - $ является инъекцией.
+
+Для этого достаточно показать, что если $(g \circ f)(a) = (g \circ f)(a')$ 
+то $a = a'$. Заметим, что $g:B\rightarrow C$ - инъекция, это значит, что 
+$f(a) = f(a')$. $f:A\rightarrow C$ - инъекция, значит $a = a'$.
 
 \item Докажите, что если $A$ накрывает $B$ и $B$ накрывает $C$, то $A$ накрывает $C$.
 
