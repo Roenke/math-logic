@@ -35,6 +35,22 @@ $f(a) = f(a')$. $f:A\rightarrow C$ - инъекция, значит $a = a'$.
 
 \textbf{Решение.} 
 
+$A$ накрывает в $B$ $\Rightarrow \exists f:A\rightarrow B - $ сюръекция.
+
+$B$ накрывает в $C$ $\Rightarrow \exists g:B\rightarrow C - $ сюръекция.
+
+Покажем, что композиция $g \circ f : A\rightarrow C - $ является 
+сюръекцией.
+
+Для этого достаточно показать, что $\forall c \in C \exists a \in A : (g 
+\circ f)(a) = c$. заметим, что $g$ - сюръекция, значит, $\forall c \exists 
+b \in B : g(b) = c$. Теперь, заметим, что $f$ - сюръекция, значит, 
+$\forall b \in B \exists a \in A : f(a) = b$. Объединяя эти два 
+утверждения, получим определение сюръекции для $(g \circ f)$. $\forall c 
+\in C \exists b \in B : g(b) = c \exists a \in A : f(a) = b \Rightarrow 
+\forall c \in C \exists a \in A : g(f(a)) = c$. Значит композиция 
+сюръекций снова сюръекция.
+
 \item Докажите, что следующие свойства верны:
 \begin{enumerate}
 \item $A$ равномощно $A$.
