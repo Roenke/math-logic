@@ -132,9 +132,18 @@ $inv([(x',y')]_\sim) = (sign(x') * y', x')$.
 \begin{enumerate}
 \item Функция $reverse$, разворачивающая список.
 
-\textbf{Решение.} $$reverse : $$
+\textbf{Решение.} $$reverse : \Pi(n \in \mathbb{N}) (Vec(A, n) \rightarrow Vec(A, n)) $$
+
 \item Функция $append$, конкатенирующая два списка.
-\item Функция $filter$, принимающая предикат и список длины $n$, и возвращающая
+
+\textbf{Решение.} $$append : \Pi((n,m) \in \mathbb{N}^2) (Vec(A, n) \rightarrow Vec(A, m) 
+\rightarrow Vec(A, n + m)) $$
+
+\item Функция $filter$, принимающая предикат и список длины $n$, и возвращающая список, с 
+элементами исходного списка, которые удовлетворяют предикату.
+\textbf{Решение.} $$filter : \Pi(n \in \mathbb{N}) (\{f:A\rightarrow \{\top, \bot}\}\} 
+\rightarrow Vec(A, n) \rightarrow \{v \in Vec(A, j) \ \big| \ j \in \mathbb{N}\cup {0}, j 
+\leqslant n\}) $$
 \end{enumerate}
 
 \item Задания на хаскелле:
