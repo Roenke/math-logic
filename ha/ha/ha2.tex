@@ -124,6 +124,23 @@ $inv([(x',y')]_\sim) = (sign(x') * y', x')$.
 
 \item Докажите, что существует биекция между двумя вариантами определения множества $\Pi (a \in A) B_a$, приведенных в лекции.
 
+\textbf{Решение.} Приведём требуемую биекцию. 
+
+Обозначим множество из первого определения $S_1 = \{f:A\rightarrow \Sigma(a\in A) B_a \ \big| 
+\ \pi_1\circ f = id_A \}$
+
+Множество из второго определения $S_2 \subset (A \rightarrow \cup_{a \in A} B_a)$
+
+Определим $h:S_1 \rightarrow S_2$. 
+
+$h(f) = a \mapsto \pi_2(f(a))$
+
+$h^{-1}(g) = a \mapsto (a, g(a))$
+
+Покажем, что это биекция:
+$$h(h^{-1}(g)) = a \mapsto \pi_2(h^{-1}(g)(a)) = a \mapsto g(a) = g$$
+$$h^{-1}(h(f)) = a \mapsto (a, h(f)(a)) = a \mapsto (a, \pi_2(f(a))) = a \mapsto f(a) = f$$
+
 \item \label{it:vec}
     Пусть $Vec(A,n)$ -- множество списков длины $n$, элементы которых лежат в множестве $A$.
     В лекции был приведен пример функции $index$.
@@ -141,9 +158,7 @@ $inv([(x',y')]_\sim) = (sign(x') * y', x')$.
 
 \item Функция $filter$, принимающая предикат и список длины $n$, и возвращающая список, с 
 элементами исходного списка, которые удовлетворяют предикату.
-\textbf{Решение.} $$filter : \Pi(n \in \mathbb{N}) (\{f:A\rightarrow \{\top, \bot}\}\} 
-\rightarrow Vec(A, n) \rightarrow \{v \in Vec(A, j) \ \big| \ j \in \mathbb{N}\cup {0}, j 
-\leqslant n\}) $$
+\textbf{Решение.} $$filter : \Pi(n \in \mathbb{N}) (\{f:A\rightarrow \{\top, \bot\}\} \rightarrow Vec(A, n) \rightarrow \{v \in Vec(A, j) \ \big| \ j \in \mathbb{N}\cup {0}, j \leqslant n\}) $$
 \end{enumerate}
 
 \item Задания на хаскелле:
