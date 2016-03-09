@@ -8,7 +8,13 @@ cb
     -> (a -> Maybe b)   -- Функция gpi a возвращает Just b, если g b == a. Если такого b не существует, она возвращает Nothing.
     -> (a -> Bool)      -- Функция dfc, такая что dfc a возвращает True тогда и только тогда, когда для любого n существует a0, такой что a == iterate (g . f) a0 !! n
     -> (a -> b, b -> a) -- Результат: биекция между a и b.
-cb f g fpi gpi dfc = undefined
+cb f g fpi gpi dfc = (to, from) where
+    to a = if dfc a then f a else case gpi a of 
+    	Just b -> f (g b)
+    	Nothing -> f a
+    from b = case fpi b of
+        Just a -> a
+        Nothing -> g b
 
 -- Пример использования
 int_int2 :: Integer -> (Integer,Integer)
