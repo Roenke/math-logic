@@ -53,5 +53,17 @@ f(n + 1) = \sum_{i < n + 1} (f(i) + 1) = \sum_{i<n}(2^i) = 2^{n + 1} - 1.
 
 \item Опишите индуктивным образом предикат на $\mathbb{N}$, задающий нечетные числа.
 
+\textbf{Решение.}
+
+\begin{center}
+	\AxiomC{}
+	\UnaryInfC{$1\ is\ odd$}
+	\DisplayProof
+	\qquad
+	\AxiomC{$n\ is\ odd$}
+	\UnaryInfC{$n + 2\ is\ odd$}
+	\DisplayProof
+\end{center}
+
 \end{enumerate}
 
