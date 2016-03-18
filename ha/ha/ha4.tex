@@ -115,10 +115,22 @@ x * (y + z) & = (x * y) + (x * z) \\
 Докажите, что в этой расширенной теории выводимы следующие формулы:
 \begin{enumerate}
 \item $x * y = y * x$
+\begin{align*}
+&(x + y) + (-x) + (-y) = (x + y)*(x + y) (-x) + (-y) = x*(x + y) + y*(x + y) + (-x) + (-y) = \\
+&=x * x + x * y + y * x + y * y + (-x) + (-y) = x + x * y + y * x + y + (-x) + (-y) = \\
+&=(x + (-x)) + (y + (-y)) + x * y + y * x = 0 + 0 + x * y + y * x = x * y + y * x = 0
+\end{align*}
+
+Осталось воспользоваться вторым свойством:
+\begin{align*}
+&x * y = x * y + 0 = x * y + y * x + (-y * x) = 0 + (-y * x) = y * x + (-y * x) + (-y * x) \\
+&= y * x + ((-y * x) + (-y * x)) = y * x + 0 = y * x
+\end{align*}
+
 \item $x + x = 0$
 \begin{align*}
-&x + x = x + x + 0 + 0 = x + x + x + x + (-x) + (-x) = (xx + xx) + (xx + xx) + (-x) + (-x) = \\
-&= x(x + x) + x(x + x) + (-x) + (-x) = (x + x)(x + x) + (-x) + (-x) = x + x + (-x) + (-x) = \\
+&x + x = x + x + 0 + 0 = x + x + x + x + (-x) + (-x) = (x * x + x * x) + (x * x + x * x) + (-x) + (-x) = \\
+&= x*(x + x) + x*(x + x) + (-x) + (-x) = (x + x)*(x + x) + (-x) + (-x) = x + x + (-x) + (-x) = \\
 &= (x + (-x)) + (x + (-x)) = 0 + 0 = 0
 \end{align*}
 \end{enumerate}
