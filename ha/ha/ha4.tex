@@ -3,14 +3,17 @@
 \item Опишите 2-сортную сигнатуру и теорию коммутативных колец с единицей и модулей над ними (определение этих 
 понятий легко найти в интернете).
 
-Сигнатура: $R=\{ \{N, P\}, \{
-+:(N \amalg P) \times (N \amalg P) \rightarrow (N \amalg P), \
-*:(N \amalg P) \times (N \amalg P) \rightarrow (N \amalg P) \}, \ 
-0:N, \ 
-0:P, \ 
-1:N, \ 
-1:P
-\}$
+Сигнатура: 
+\begin{align*}
+\{ &\{N, M\}, \\ 
+\{
+&+:N \times N \rightarrow N, *:N \times N \rightarrow N, 
+0:N, 
+1:N,\\
+&\diamond : M\times M \rightarrow M, 
+\cdot:R\times M \rightarrow M 
+\}\}
+\end{align*}
 						   
 Теория:
 \begin{align*}
@@ -20,19 +23,14 @@
 	a + (-a) &= 0 \\
 	a * b &= b * a \\
 	(a * b) * c &= a * (b * c) \\
-	a * 1 = a \\
+	a * 1 &= a \\
 	a * (b + c) &= a * b + a * c \\
-	(a + b) * c &= a * c + b * c
-\end{align*}
-
-Модуль над кольцом, сигнатура: $\{ \{R, M\}, \diamond : M\times M \rightarrow M, \cdot:R\times M \rightarrow M \}$
-
-Модуль над кольцом, теория:
-\begin{align*}
-a \diamond b &= b \diamond a \\
-(r_1 * r_2) \cdot m &= r_1 \cdot (r_2 \cdot m) \\
-r\cdot (m_1 \diamond m_2) &= r\cdot m_1 \diamond r \cdot m_2 \\
-(r_1 + r_2) \cdot m &= r_1 \cdot m \diamond r_2 \cdot m
+	(a + b) * c &= a * c + b * c \\
+	\\
+	a \diamond b &= b \diamond a \\
+	(r_1 * r_2) \cdot m &= r_1 \cdot (r_2 \cdot m) \\
+	r\cdot (m_1 \diamond m_2) &= r\cdot m_1 \diamond r \cdot m_2 \\
+	(r_1 + r_2) \cdot m &= r_1 \cdot m \diamond r_2 \cdot m
 \end{align*}
 
 
@@ -42,7 +40,8 @@ r\cdot (m_1 \diamond m_2) &= r\cdot m_1 \diamond r \cdot m_2 \\
 0 + y & = y \\
 S(x) + y & = S(x + y)
 \end{align*}
-Докажите, что следующие формулы невыводимы в этой теории
+Докажите, что следующие формулы невыводимы в этой теории. Напомню, что для доказательства невыводимости формулы 
+достаточно привести пример модели в которой эта формула не верна.
 \begin{itemize}
 \item $(x + y) + z = x + (y + z)$
 
@@ -71,8 +70,6 @@ S := n \mapsto n + 1, \
 данной модели не верна. Значит и формула в исходной теории невыводима.
 
 \end{itemize}
-Напомню, что для доказательства невыводимости формулы достаточно привести пример модели в которой эта формула не 
-верна.
 
 \item Рассмотрим сигнатуру $(\{D\}, \{ * : D \times D \to D, 1 : D, f : D \to D, g : D \to D, i_1 : D \to D, i_2 : D \to D \})$.
     Рассмотрим следующую теорию в ней:
