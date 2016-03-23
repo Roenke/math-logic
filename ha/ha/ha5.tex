@@ -1,0 +1,188 @@
+\section*{Пропозиционная логика}
+
+Множество типов лямбда исчисления:
+\begin{center}
+\AxiomC{}
+\RightLabel{, $P \in Var$}
+\UnaryInfC{$P \in Type$}
+\DisplayProof
+\qquad
+\AxiomC{}
+\UnaryInfC{$\bot \in Type$}
+\DisplayProof
+\qquad
+\AxiomC{$\varphi \in Type$}
+\AxiomC{$\psi \in Type$}
+\BinaryInfC{$\varphi \to \psi \in Type$}
+\DisplayProof
+\end{center}
+
+\begin{center}
+\AxiomC{$\varphi \in Type$}
+\AxiomC{$\psi \in Type$}
+\BinaryInfC{$\varphi \times \psi \in Type$}
+\DisplayProof
+\qquad
+\AxiomC{$\varphi \in Type$}
+\AxiomC{$\psi \in Type$}
+\BinaryInfC{$\varphi \amalg \psi \in Type$}
+\DisplayProof
+\end{center}
+
+Множество предтермов лямбда исчисления (мы используем разные множества для переменных в типах и переменных в термах):
+\begin{center}
+\AxiomC{}
+\RightLabel{, $x \in Var'$}
+\UnaryInfC{$x \in Term$}
+\DisplayProof
+\qquad
+\AxiomC{$t \in Term$}
+\RightLabel{, $\varphi \in Type$}
+\UnaryInfC{$absurd_\varphi\,t \in Term$}
+\DisplayProof
+\qquad
+\end{center}
+
+\begin{center}
+\AxiomC{$t \in Term$}
+\RightLabel{, $x \in Var'$}
+\UnaryInfC{$\lambda x.\,t \in Term$}
+\DisplayProof
+\qquad
+\AxiomC{$t \in Term$}
+\AxiomC{$t' \in Term$}
+\BinaryInfC{$t\,t' \in Term$}
+\DisplayProof
+\end{center}
+
+\begin{center}
+\AxiomC{$a \in Term$}
+\AxiomC{$b \in Term$}
+\BinaryInfC{$(a,b) \in Term$}
+\DisplayProof
+\qquad
+\AxiomC{$t \in Term$}
+\UnaryInfC{$fst\,t \in Term$}
+\DisplayProof
+\qquad
+\AxiomC{$t \in Term$}
+\UnaryInfC{$snd\,t \in Term$}
+\DisplayProof
+\end{center}
+
+\begin{center}
+\AxiomC{$t \in Term$}
+\UnaryInfC{$Left\,t \in Term$}
+\DisplayProof
+\qquad
+\AxiomC{$t \in Term$}
+\UnaryInfC{$Right\,t \in Term$}
+\DisplayProof
+\end{center}
+
+\begin{center}
+\AxiomC{$e \in Term$}
+\AxiomC{$a \in Term$}
+\AxiomC{$b \in Term$}
+\RightLabel{, $x,y \in Var'$}
+\TrinaryInfC{$\mathbf{case}\,e\,\mathbf{of}\,\{\,Left(x) \to a; Right(y) \to b\,\} \in Term$}
+\DisplayProof
+\end{center}
+
+Правила типизации:
+\begin{center}
+\AxiomC{}
+\RightLabel{, $(x : \varphi) \in \Gamma$}
+\UnaryInfC{$\Gamma \vdash x : \varphi$}
+\DisplayProof
+\qquad
+\AxiomC{$\Gamma \vdash b : \bot$}
+\UnaryInfC{$\Gamma \vdash absurd_\varphi\,b : \varphi$}
+\DisplayProof
+\qquad
+\end{center}
+
+\begin{center}
+\AxiomC{$\Gamma, x : \varphi \vdash b : \psi$}
+\UnaryInfC{$\Gamma \vdash \lambda x.\,b : \varphi \to \psi$}
+\DisplayProof
+\qquad
+\AxiomC{$\Gamma \vdash f : \varphi \to \psi$}
+\AxiomC{$\Gamma \vdash a : \varphi$}
+\BinaryInfC{$\Gamma \vdash f\,a : \psi$}
+\DisplayProof
+\end{center}
+
+\begin{center}
+\AxiomC{$\Gamma \vdash a : \varphi$}
+\AxiomC{$\Gamma \vdash b : \psi$}
+\BinaryInfC{$\Gamma \vdash (a,b) : \varphi \times \psi$}
+\DisplayProof
+\qquad
+\AxiomC{$\Gamma \vdash p : \varphi \times \psi$}
+\UnaryInfC{$\Gamma \vdash fst\,p : \varphi$}
+\DisplayProof
+\qquad
+\AxiomC{$\Gamma \vdash p : \varphi \times \psi$}
+\UnaryInfC{$\Gamma \vdash snd\,t : \psi$}
+\DisplayProof
+\end{center}
+
+\begin{center}
+\AxiomC{$\Gamma \vdash a : \varphi$}
+\UnaryInfC{$\Gamma \vdash Left\,a : \varphi \amalg \psi$}
+\DisplayProof
+\qquad
+\AxiomC{$\Gamma \vdash b : \psi$}
+\UnaryInfC{$\Gamma \vdash Right\,b : \varphi \amalg \psi$}
+\DisplayProof
+\end{center}
+
+\begin{center}
+\AxiomC{$\Gamma \vdash e : \varphi \amalg \psi$}
+\AxiomC{$\Gamma, x : \varphi \vdash a : \chi$}
+\AxiomC{$\Gamma, y : \psi \vdash b : \chi$}
+\TrinaryInfC{$\Gamma \vdash \mathbf{case}\,e\,\mathbf{of}\,\{\,Left(x) \to a; Right(y) \to b\,\} : \chi$}
+\DisplayProof
+\end{center}
+
+А теперь задания:
+
+\begin{enumerate}
+
+\item Между правилами вывода логики и конструкциями в лямбда исчислении существует естественная биекция.
+    Например, $\to\!\!I$ соответствует абстракции, а $\to\!\!E$ соответствует аппликации.
+    Запишите эту биекцию для остальных правил и конструкций.
+
+\item Приведите для следующих теорем деревья вывода и термы, доказывающие их:
+\begin{enumerate}
+\item $P \to P$
+\item $P \to (P \to Q) \to Q$
+\item $P \land Q \to P \lor Q$
+\item $(P \lor Q) \land R \to (P \land R) \lor (Q \land R)$
+\end{enumerate}
+
+\item Приведите для следующих теорем доказывающие их термы:
+\begin{enumerate}
+\item $(P \land R) \lor (Q \land R) \to (P \lor Q) \land R$
+\item $(P \lor Q) \lor R \to P \lor (Q \lor R)$
+\item $((((P \to Q) \to P) \to P) \to Q) \to Q$
+\end{enumerate}
+
+\item Добавим в нашей логике новую связку $\leftrightarrow$, удовлетворяющую следующим условиям:
+\begin{align*}
+\top \leftrightarrow \top & = \top \\
+\top \leftrightarrow \bot & = \bot \\
+\bot \leftrightarrow \top & = \bot \\
+\bot \leftrightarrow \bot & = \top
+\end{align*}
+\begin{enumerate}
+\item Опишите правила введения и элиминации для этой связки.
+    Они не должны использовать никакие другие связки.
+\item Опишите аналогичные конструкции и правила типизации для них в лямбда исчислении.
+\item Приведите терм, доказывающий формулу $(P \lor Q \to R) \leftrightarrow (P \to R) \land (Q \to R)$.
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
