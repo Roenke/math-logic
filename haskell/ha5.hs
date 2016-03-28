@@ -1,5 +1,5 @@
 two_a :: p -> p
-two_a = id
+two_a = (\z -> z )
 
 two_b :: p -> (p -> q) -> q
 two_b x f = f x
