@@ -1,0 +1,102 @@
+
+
+Пусть $M$ -- частично упорядоченное множество и $x,y \in M$.
+Тогда \emph{супремум} $x$ и $y$ -- это элемент $x \lor y \in M$, удовлетворяющий следующим условиям:
+\begin{itemize}
+\item $x \leq x \lor y$.
+\item $y \leq x \lor y$.
+\item Для любого $\gamma$ если $x \leq \gamma$ и $y \leq \gamma$, то $x \lor y \leq \gamma$.
+\end{itemize}
+Супремум двух элементов может не существовать, но если он существует, то он уникален.
+
+\emph{Инфимум} $x$ и $y$ -- это элемент $x \land y \in M$, удовлетворяющий следующим условиям:
+\begin{itemize}
+\item $x \land y \leq x$.
+\item $x \land y \leq y$.
+\item Для любого $\gamma$ если $\gamma \leq x$ и $\gamma \leq y$, то $\gamma \leq x \land y$.
+\end{itemize}
+Инфимум двух элементов может не существовать, но если он существует, то он уникален.
+
+Эти условия в определениях супремума и инфимума можно записать в следующем виде (это те же самые условия, но в такой форме их может быть проще воспринимать):
+\begin{center}
+\AxiomC{}
+\UnaryInfC{$x \leq x \lor y$}
+\DisplayProof
+\qquad
+\AxiomC{}
+\UnaryInfC{$y \leq x \lor y$}
+\DisplayProof
+\qquad
+\AxiomC{$x \leq \gamma$}
+\AxiomC{$y \leq \gamma$}
+\BinaryInfC{$x \lor y \leq \gamma$}
+\DisplayProof
+\end{center}
+
+\begin{center}
+\AxiomC{}
+\UnaryInfC{$x \land y \leq x$}
+\DisplayProof
+\qquad
+\AxiomC{}
+\UnaryInfC{$x \land y \leq y$}
+\DisplayProof
+\qquad
+\AxiomC{$\gamma \leq x$}
+\AxiomC{$\gamma \leq y$}
+\BinaryInfC{$\gamma \leq x \land y$}
+\DisplayProof
+\end{center}
+
+\begin{enumerate}
+
+\item Закончите доказательство того, что интерпретация логики с $\land$ и $\lor$ в дистрибутивных решетках корректна.
+    То есть нужно доказать, что если $\gamma \leq \varphi \lor \psi$, $\gamma \land \varphi \leq \chi$ и $\gamma \land \psi \leq \chi$, то $\gamma \leq \chi$.
+    
+    \textit{Решена в классе}
+
+\item Докажите, что в любой решетке для любых элементов $x$, $\varphi$ и $\psi$ следующие утверждения эквивалентны:
+\begin{enumerate}
+\item Для любого $\gamma$ если $\gamma \leq x$, то $\gamma \land \varphi \leq \psi$.
+\item Для любого $\gamma$ если $\gamma \leq x$ и $\gamma \leq \varphi$, то $\gamma \leq \psi$.
+\item $x \land \varphi \leq \psi$.
+\end{enumerate}
+
+\textit{Решена в классе}
+
+\item Пусть $\varphi$, $\psi$, $x$ и $x'$ -- элементы решетки. Допустим в ней верны следующие свойства:
+\begin{enumerate}
+\item Для любого $\gamma$
+    \[ \gamma \leq x \Leftrightarrow \gamma \land \varphi \leq \psi \]
+\item Для любого $\gamma$
+    \[ \gamma \leq x' \Leftrightarrow \gamma \land \varphi \leq \psi \]
+\end{enumerate}
+Докажите, что тогда $x = x'$.
+
+\item Покажите, что в любой алгебре Гейтинга $M$ верны следующие свойства:
+\begin{enumerate}
+\item В $M$ существует наибольший элемент, то есть элемент $\top$, удовлетворяющий условию, что $x \leq \top$ для любого $x$.
+\item Для любых $\varphi, \psi \in M$ верно $\varphi \leq \psi \Leftrightarrow (\varphi \to \psi) = \top$
+\end{enumerate}
+
+\item Докажите, что любая алгебра Гейтинга дистрибутивна.
+    Hint: Нужно отдельно доказать, что
+    $(\varphi \land \psi) \lor (\varphi \land \chi) \leq \varphi \land (\psi \lor \chi)$ и
+    $\varphi \land (\psi \lor \chi) \leq (\varphi \land \psi) \lor (\varphi \land \chi)$.
+    Первое свойство верно в любой решетке, при доказательстве второго используется, что решетка ялвяется алгеброй Гейтинга.
+
+\textit{Решена в классе}
+\item Докажите, что в любом частично упорядоченном множестве следующие условия эквивалентны:
+\begin{enumerate}
+\item Для любого множества $S$ ее элементов существует их супремум $\bigvee S$.
+\item Для любого множества $S$ ее элементов существует их инфимум $\bigwedge S$.
+\end{enumerate}
+
+\item Докажите, что следующие формулы не выводимы в пропозициональной логике:
+\begin{enumerate}
+\item $(P \to Q) \to \neg P \lor Q$.
+\item $\neg (P \land Q) \to \neg P \lor \neg Q$.
+\end{enumerate}
+
+\end{enumerate}
+
