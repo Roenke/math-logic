@@ -129,13 +129,32 @@
 \item Для любого множества $S$ ее элементов существует их инфимум $\bigwedge S$.
 \end{enumerate}
 
+	\textbf{Решение.}
+	
+	$$ 
+
 \item Докажите, что следующие формулы не выводимы в пропозициональной логике:
 \begin{enumerate}
 \item $(P \to Q) \to \neg P \lor Q$.
 
-р
-
+	\textbf{Решение.}
+	
+	Выберем $P = (0, 2), Q = (1, 3)$. Теперь 
+	\begin{align*}
+		P \to Q &= (-\infty; 0) \cup (1; +\infty) \\
+		\neg P \lor Q &= (-\infty; 0) \cup (1; +\infty) \\
+		(P \to Q) \to (\neg P \lor Q) &= (-\infty; 0) \cup (0, 1) \cup (1, +\infty) \neq \mathbb{R}
+	\end{align*}
 \item $\neg (P \land Q) \to \neg P \lor \neg Q$.
+	\textbf{Решение.}
+	
+	Выберем $P = (0, 3), Q = (1, 2)$. Теперь
+	\begin{align*}
+		\neg (P \land Q) &= (-\infty; 1) \cup (2, +\infty) \\
+		\neg P \lor \neg Q &= (-\infty; 1) \cup (2, +\infty) \\
+		\neg (P \land Q) \to \neg P \lor \neg Q &= (-\infty; 1) \cup (1, 2) \cup (2, +\infty) \neq \mathbb{R}
+	\end{align*}
+
 \end{enumerate}
 
 \end{enumerate}
