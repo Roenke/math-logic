@@ -99,6 +99,29 @@
     $(\varphi \land \psi) \lor (\varphi \land \chi) \leq \varphi \land (\psi \lor \chi)$ и
     $\varphi \land (\psi \lor \chi) \leq (\varphi \land \psi) \lor (\varphi \land \chi)$.
     Первое свойство верно в любой решетке, при доказательстве второго используется, что решетка ялвяется алгеброй Гейтинга.
+    
+    \textbf{Решение.}
+    
+    Сначала покажем, что $(\varphi \land \psi) \lor (\varphi \land \chi) \leq \varphi \land (\psi \lor \chi)$.
+    \begin{center}
+    	\AxiomC{}
+    	\UnaryInfC{$\varphi \land \psi \leq \varphi$}
+    	\AxiomC{}
+    	\UnaryInfC{$\varphi \land \psi \leq \psi \leq \psi \lor \chi$}
+    	\UnaryInfC{$\varphi \land \psi \leq \psi \lor \chi$}
+    	\BinaryInfC{$\varphi \land \psi \leq \varphi \land (\psi \lor \chi)$}
+    	\AxiomC{}
+    	\UnaryInfC{$\varphi \land \chi \leq \varphi$}
+    	\AxiomC{}
+    	\UnaryInfC{$\varphi \land \chi \leq \chi \leq \psi \lor \chi$}
+    	\UnaryInfC{$\varphi \land \chi \leq \psi \lor \chi$}
+    	\BinaryInfC{$\varphi \land \chi \leq \varphi \land (\psi \lor \chi)$}
+    	\BinaryInfC{$(\varphi \land \psi) \lor (\varphi \land \chi) \leq \varphi \land (\psi \lor \chi)$}
+    	\DisplayProof
+    \end{center}
+    
+    И теперь обратно, $\varphi \land (\psi \lor \chi) \leq (\varphi \land \psi) \lor (\varphi \land \chi)$.
+    
 
 \item Докажите, что в любом частично упорядоченном множестве следующие условия эквивалентны:
 \begin{enumerate}
@@ -109,6 +132,9 @@
 \item Докажите, что следующие формулы не выводимы в пропозициональной логике:
 \begin{enumerate}
 \item $(P \to Q) \to \neg P \lor Q$.
+
+р
+
 \item $\neg (P \land Q) \to \neg P \lor \neg Q$.
 \end{enumerate}
 
