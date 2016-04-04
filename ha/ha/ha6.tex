@@ -120,8 +120,27 @@
     	\DisplayProof
     \end{center}
     
-    И теперь обратно, $\varphi \land (\psi \lor \chi) \leq (\varphi \land \psi) \lor (\varphi \land \chi)$.
+    И теперь \textit{обратно}, $\varphi \land (\psi \lor \chi) \leq (\varphi \land \psi) \lor (\varphi \land \chi)$.
     
+    Заметим, что $(\varphi \to (\varphi \land \psi) \lor (\varphi \land \chi)) = \bigvee \{\gamma | \varphi \land \gamma \leq (\varphi \land \psi) \lor (\varphi \land \chi)\}$
+    
+    Очевидно, что 
+    \begin{align*}
+    \psi &\in \{\gamma | \varphi \land \gamma \leq (\varphi \land \psi) \lor (\varphi \land \chi)\},\\
+    \chi &\in \{\gamma | \varphi \land \gamma \leq (\varphi \land \psi) \lor (\varphi \land \chi)\}
+    \end{align*}
+    
+    Значит, можно записать выражение:
+    \begin{equation*}
+    	\psi \lor \chi \leq \bigvee \{\gamma | \varphi \land \gamma \leq (\varphi \land \psi) \lor (\varphi \land \chi)\} \leq (\varphi \to (\varphi \land \psi) \lor (\varphi \land \chi))
+    \end{equation*}
+
+	Поскольку у нас алгебра Гейтинга, то последнее выражение влечёт
+	\begin{equation*}
+		(\psi \lor \chi) \land \varphi \leq (\varphi \land \psi) \lor (\varphi \land \chi)
+	\end{equation*}
+	
+	А это ровно то, что нам требуется.
 
 \item Докажите, что в любом частично упорядоченном множестве следующие условия эквивалентны:
 \begin{enumerate}
