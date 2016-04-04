@@ -125,8 +125,10 @@
     
     Прежде всего:
     \begin{align*}
-    	\psi \land \varphi &\leq (\varphi \land \psi) \lor (\varphi \land \chi) \Leftrightarrow \psi \leq (\varphi \to (\varphi \land \psi) \lor (\varphi \land \chi)) \\
-    	\chi \land \varphi &\leq (\varphi \land \psi) \lor (\varphi \land \chi) \Leftrightarrow \chi \leq (\varphi \to (\varphi \land \psi) \lor (\varphi \land \chi))
+    	\psi \land \varphi &\leq (\varphi \land \psi) \lor (\varphi \land \chi) \Leftrightarrow \psi \leq 
+    	(\varphi \to (\varphi \land \psi) \lor (\varphi \land \chi)) \\
+    	\chi \land \varphi &\leq (\varphi \land \psi) \lor (\varphi \land \chi) \Leftrightarrow \chi \leq 
+    	(\varphi \to (\varphi \land \psi) \lor (\varphi \land \chi))
     \end{align*}
     Воспользуемся $(\lor E)$ и свойством алгебры Гейтинга:
     \begin{equation*}
@@ -154,20 +156,21 @@
 
 	\textbf{Решение.}
 	
-	Выберем $P = (0, 2), Q = (1, 3)$. Теперь 
+	Выберем $P = (0, 1), Q = (0, 1)$. Теперь 
 	\begin{align*}
-		P \to Q &= (-\infty; 0) \cup (1; +\infty) \\
-		\neg P \lor Q &= (-\infty; 0) \cup (1; +\infty) \\
-		(P \to Q) \to (\neg P \lor Q) &= (-\infty; 0) \cup (0, 1) \cup (1, +\infty) \neq \mathbb{R}
+		P \to Q &= (-\infty; 0] \cup [1; +\infty) \cup (0; 1) = \mathbb{R} \\
+		\neg P \lor Q &= (-\infty; 0) \cup (0; 1) \cup (1; +\infty) \\
+		(P \to Q) \to (\neg P \lor Q) &= \varnothing \cup (-\infty; 0) \cup (0; 1) \cup (1; +\infty) \neq 
+		\mathbb{R}
 	\end{align*}
 \item $\neg (P \land Q) \to \neg P \lor \neg Q$.
 	\textbf{Решение.}
 	
-	Выберем $P = (0, 3), Q = (1, 2)$. Теперь
+	Выберем $P = (0, 1), Q = (1, 2)$. Теперь
 	\begin{align*}
-		\neg (P \land Q) &= (-\infty; 1) \cup (2, +\infty) \\
-		\neg P \lor \neg Q &= (-\infty; 1) \cup (2, +\infty) \\
-		\neg (P \land Q) \to \neg P \lor \neg Q &= (-\infty; 1) \cup (1, 2) \cup (2, +\infty) \neq \mathbb{R}
+		\neg (P \land Q) &= \mathbb{R} \\
+		\neg P \lor \neg Q &= (-\infty; 1) \cup (1, +\infty) \\
+		\neg (P \land Q) \to \neg P \lor \neg Q &= \varnothing \cup (-\infty; 1) \cup (1, +\infty) \neq \mathbb{R}
 	\end{align*}
 
 \end{enumerate}
