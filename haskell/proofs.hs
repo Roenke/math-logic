@@ -1,3 +1,6 @@
+--task5 :: (Either (p -> q) (q -> p) -> p) -> p
+-- TODO add task5 lambda term.
+
 data Type = TVar String | Arr Type Type | Prod Type Type | Sum [Type]
     deriving Show
 
