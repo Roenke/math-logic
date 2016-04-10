@@ -4,6 +4,13 @@
 
 \item Докажите, что формула $((P \to Q) \to P) \to P$ невыводима, показав, что ее выводимость влечет выводимость исключенного третьего.
 
+\textbf{Решение.} Подставим $Q = P = \bot$, получим:
+\begin{equation*}
+((\bot \to \bot)\to \bot) \to \bot \Leftrightarrow (\neg \bot \to \bot) \to \bot \Leftrightarrow \neg \neg \bot 
+\to \bot
+\end{equation*}
+Это отрицание третьего, по следствию леммы об уточнении исходная формула невыводима.
+
 \item Докажите, что в интуиционистской логике следующие правила вывода эквивалентны:
 \begin{center}
 \AxiomC{}
@@ -29,6 +36,17 @@
 
 \item Докажите в классической логике формулу $\neg (\varphi \land \psi) \to \neg \varphi \lor \neg \psi$
     Напишите лямбда терм, доказывающий эту формулу.
+    
+    \textbf{Решение.}
+    В классический логике нам достаточно перебрать значения переменных $\varphi, \psi$, чтобы доказать формулу.
+   
+   \begin{longtable}{c|c|c|c|c}
+   		$\varphi$ & $\psi$ & $\neg(\varphi \land \psi)$ & $\neg \varphi \lor \neg \psi$ & $\neg(\varphi \land \psi) \to \neg \varphi \lor \neg \psi$  \\ \hline
+   		0 & 0 & 1 & 1 & 1 \\ 
+   		0 & 1 & 1 & 1 & 1 \\ 
+   		1 & 0 & 1 & 1 & 1 \\ 
+   		1 & 1 & 0 & 0 & 1 \\ 
+   	\end{longtable}
 
 \item Докажите в интуиционистской логике формулу $(((P \to Q) \lor (Q \to P)) \to P) \to P$.
     Напишите лямбда терм, доказывающий эту формулу.

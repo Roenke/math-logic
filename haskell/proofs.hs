@@ -1,5 +1,10 @@
+import Language.Haskell.Djinn
+
 task5 :: (Either (p -> q) (q -> p) -> p) -> p
 task5 f = f (Right (\q -> f (Left (\p -> q))))
+
+--task1 :: ((p -> q) -> p) -> p
+--task1 f = f (\p -> p)
 
 data Type = TVar String | Arr Type Type | Prod Type Type | Sum [Type]
     deriving Show
