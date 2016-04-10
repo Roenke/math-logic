@@ -25,6 +25,40 @@
 \end{center}
 Для этого достаточно показать, что имея правило (lem), заключение правила (dne) выводимо, и наоборот.
 
+\textbf{Решение.} $lem \Rightarrow dne$. Честно построим дерево вывода.
+	\begin{center}
+		\AxiomC{}
+		\UnaryInfC{$\vdash \varphi \lor \neg \varphi$}
+		\AxiomC{}
+		\UnaryInfC{$\neg \varphi ,(\neg\varphi \to \bot) \vdash \neg\varphi \to \bot$}
+		\AxiomC{}
+		\UnaryInfC{$\neg \varphi ,(\neg\varphi \to \bot) \vdash \neg\varphi$}
+		\BinaryInfC{$\neg \varphi ,(\neg\varphi \to \bot) \vdash \bot$}
+		\UnaryInfC{$\neg \varphi ,(\neg\varphi \to \bot) \vdash \varphi$}
+		\UnaryInfC{$\neg \varphi \vdash (\neg\varphi \to \bot) \to \varphi$}
+		\AxiomC{}
+		\UnaryInfC{$\varphi, (\neg\varphi \to \bot) \vdash \varphi$}
+		\UnaryInfC{$\varphi \vdash (\neg\varphi \to \bot) \to \varphi$}
+		\TrinaryInfC{$\vdash (\neg\varphi \to \bot) \to \varphi$}
+		\UnaryInfC{$\vdash \neg \neg \varphi \to \varphi$}
+		\DisplayProof
+	\end{center}
+	$dne \Rightarrow lem$	
+	\begin{center}
+		\AxiomC{}
+		\UnaryInfC{$\vdash \neg \neg (\varphi \lor \neg \varphi) \to \varphi \lor \neg \varphi$}
+		\AxiomC{$\vdash \neg \neg (\varphi \lor \neg \varphi)$}
+		\BinaryInfC{$\vdash \varphi \lor \neg \varphi$}
+		\DisplayProof
+	\end{center}
+	
+	Заметим, что выражение слева следует из $dne$. Осталось доказать лишь выражение справа. Сделаем это с помощью терма, которому можно приписать тип $(\varphi \lor (\varphi \to \bot)) \to \bot) \to \bot$:
+	\begin{equation*}
+		\lambda f. f \ (Right \ (\lambda x. f (Left \ x))) 
+	\end{equation*}
+
+	
+
 \item Формула $\varphi \land \psi$ доказуема тогда и только тогда когда доказуемы $\varphi$ и $\psi$.
     Верно ли аналогичное утверждение для $\varphi \lor \psi$?
     То есть, правда ли что $\varphi \lor \psi$ доказуема тогда и только тогда когда доказуема либо $\varphi$, либо $\psi$?
