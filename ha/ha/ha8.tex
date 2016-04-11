@@ -1,0 +1,60 @@
+\section*{Логика первого порядка}
+
+\begin{enumerate}
+
+\item Определите формулы, удовлетворяющие следующим описаниям.
+    Для первых двух заданий мы предполагаем, что в сигнатуре есть предикатный символ $\leq$.
+\begin{enumerate}
+\item $\exists x \leq t\ \psi$ (``Существует $x$, меньше либо равный $t$, такой что верно $\psi$'').
+\item $\forall x \leq t\ \psi$ (``Для любого $x$, меньше либо равного $t$, верно $\psi$'').
+\item ``Существует не менее двух элементов, удовлетворяющих $\varphi(x)$''.
+\item ``Существует ровно два элемента, удовлетворяющие $\varphi(x)$''.
+\item ``Существует по крайней мере один, но не более двух элементов, удовлетворяющих $\varphi(x)$''.
+\item ``Существует не более одного элемента, удовлетворяющего $\varphi(x)$''.
+\end{enumerate}
+
+\item Напишите на хаскелле функцию, аналогичную конструкции $\mathbf{case}$ для пар, используя $fst$ и $snd$.
+    Укажите ее тип (вам нужно будет использовать функции высшего порядка вместо расширения контекста).
+    Реализуйте функции $fst'$ и $snd'$, эквивалентные обычным $fst$ и $snd$, через эту функцию.
+
+\item Пусть у нас есть несколько формул:
+\begin{enumerate}
+\item \label{it:no} $x \neq y$
+\item \label{it:e} $\exists x (x \neq y)$
+\item \label{it:a} $\forall x (x \neq y)$
+\item \label{it:ee} $\exists x \exists y (x \neq y)$
+\item \label{it:ea} $\exists x \forall y (x \neq y)$
+\item \label{it:ae} $\forall x \exists y (x \neq y)$
+\item \label{it:aa} $\forall x \forall y (x \neq y)$
+\end{enumerate}
+И несколько интерпретаций:
+\begin{align*}
+M_0 & = \varnothing \\
+M_1 & = \{ 7 \} \\
+M_2 & = \{ 13, 28 \}
+\end{align*}
+Какие из этих формул верны в каких моделях?
+
+\item Докажите, что формулы $\forall x \forall y (x \neq y)$ и $\neg \exists x\ \top$ эквивалентны,
+    написав лямбда терм типа $((\forall x \forall y (x \neq y)) \to \neg \exists x\ \top) \land ((\neg \exists x\ \top) \to \forall x \forall y (x \neq y))$.
+
+\item Пусть теория $T$ состоит из одной аксиомы $\{\,st : \exists (x : s)\ \top\,\}$.
+    Пусть $x \notin FV(\varphi)$.
+    Тогда докажите, что следующие формулы являются теоремами этой теории.
+    Приведите и дерево вывода, и лямбда терм, доказывающие эти формулы.
+\begin{enumerate}
+\item $\varphi \land (\forall x\ \psi) \to \forall x\ (\varphi \land \psi)$ (эта формула выводима и в пустой теории)
+\item $(\forall x\ (\varphi \land \psi)) \to \varphi \land (\forall x\ \psi)$
+\end{enumerate}
+
+\item Докажите, что следующие формулы выводимы (в пустой теории), написав лямбда термы, доказывающие их.
+    Исключенное третье можно (и нужно) использовать только в последнем пункте.
+\begin{enumerate}
+\item $(\forall x\ (\neg \varphi)) \to \neg \exists x\ \varphi$
+\item $(\neg \exists x\ \varphi) \to \forall x\ (\neg \varphi)$
+\item $\exists x\ (\neg \varphi) \to \neg \forall x\ \varphi$
+\item $(\neg \forall x\ \varphi) \to \exists x\ (\neg \varphi)$
+\end{enumerate}
+
+\end{enumerate}
+
