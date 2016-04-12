@@ -8,9 +8,22 @@
 \item $\exists x \leq t\ \psi$ (``Существует $x$, меньше либо равный $t$, такой что верно $\psi$'').
 \item $\forall x \leq t\ \psi$ (``Для любого $x$, меньше либо равного $t$, верно $\psi$'').
 \item ``Существует не менее двух элементов, удовлетворяющих $\varphi(x)$''.
+\begin{equation*}
+\exists x \exists y \ (x \neq y) \land \varphi(x) \land \varphi(y)
+\end{equation*}
 \item ``Существует ровно два элемента, удовлетворяющие $\varphi(x)$''.
+\begin{equation*}
+	\exists x \exists y \ (x \neq y) \land \varphi(x) \land \varphi(y) \land (\forall z \ \varphi(z) \to (z = x \lor z = y))
+\end{equation*}
 \item ``Существует по крайней мере один, но не более двух элементов, удовлетворяющих $\varphi(x)$''.
-\item ``Существует не более одного элемента, удовлетворяющего $\varphi(x)$''.
+\begin{equation*}
+	\exists x \ \varphi(x) \land (\forall p \forall y \forall z \ \varphi(p) \land \varphi(y) \land \varphi(z) \to ((p = y) \lor (y = z) \lor (p = z)))
+\end{equation*}
+
+\item ``Существует не более одного элемента, удовлетворяющего $\varphi(x)$''
+\begin{equation*}
+	\forall x \forall y \ (\varphi(x) \land \varphi(y) \to (x = y)
+\end{equation*}
 \end{enumerate}
 
 \item Напишите на хаскелле функцию, аналогичную конструкции $\mathbf{case}$ для пар, используя $fst$ и $snd$.
