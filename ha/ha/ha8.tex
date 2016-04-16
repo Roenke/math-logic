@@ -30,6 +30,10 @@
     Укажите ее тип (вам нужно будет использовать функции высшего порядка вместо расширения контекста).
     Реализуйте функции $fst'$ и $snd'$, эквивалентные обычным $fst$ и $snd$, через эту функцию.
 
+\textbf{Решение.} Если я правильно понял, что требуется, то может определись функцию $fun$, и $fst', snd'$ через неё:
+
+\lstinputlisting[language=haskell]{ha/code/task2.hs}
+
 \item Пусть у нас есть несколько формул:
 \begin{enumerate}
 \item \label{it:no} $x \neq y$ -- $\{M_0\}$
@@ -49,24 +53,54 @@ M_2 & = \{ 13, 28 \}
 Какие из этих формул верны в каких моделях?
 
 \item Докажите, что формулы $\forall x \forall y (x \neq y)$ и $\neg \exists x\ \top$ эквивалентны,
-    написав лямбда терм типа $((\forall x \forall y (x \neq y)) \to \neg \exists x\ \top) \land ((\neg \exists x\ \top) \to \forall x \forall y (x \neq y))$.
+    написав лямбда терм типа $((\forall x \forall y (x \neq y)) \to \neg \exists x\ \top) \land ((\neg \exists x\ 
+    \top) \to \forall x \forall y (x \neq y))$.
 
 \item Пусть теория $T$ состоит из одной аксиомы $\{\,st : \exists (x : s)\ \top\,\}$.
     Пусть $x \notin FV(\varphi)$.
     Тогда докажите, что следующие формулы являются теоремами этой теории.
     Приведите и дерево вывода, и лямбда терм, доказывающие эти формулы.
 \begin{enumerate}
-\item $\varphi \land (\forall x\ \psi) \to \forall x\ (\varphi \land \psi)$ (эта формула выводима и в пустой теории)
+\item $\varphi \land (\forall x\ \psi) \to \forall x\ (\varphi \land \psi)$ (эта формула выводима и в пустой 
+теории)
+\begin{equation*}
+	\lambda p. \mathbf{case} \ p \ of \{ (phi, f) \to \lambda x.(phi, f \ x) \}
+\end{equation*}
 \item $(\forall x\ (\varphi \land \psi)) \to \varphi \land (\forall x\ \psi)$
+\begin{equation*}
+	\lambda f. \mathbf{case} \ st \ of \{ (phi, psi) \to (f\ phi, \lambda x. snd \ (f \ x)) \}
+\end{equation*}
 \end{enumerate}
 
 \item Докажите, что следующие формулы выводимы (в пустой теории), написав лямбда термы, доказывающие их.
     Исключенное третье можно (и нужно) использовать только в последнем пункте.
 \begin{enumerate}
 \item $(\forall x\ (\neg \varphi)) \to \neg \exists x\ \varphi$
+
+Или, что то же самое: $\forall x\ (\varphi \to \bot) \to \exists x\ \varphi \to \bot$
+\begin{equation*}
+	\lambda f.\lambda p. \mathbf{case} \ p \ of \ \{(x, pr) \to (f \ x) \ pr\}
+\end{equation*}
 \item $(\neg \exists x\ \varphi) \to \forall x\ (\neg \varphi)$
+
+Или, что то же самое:  $((\exists x\ \varphi) \to \bot) \to \forall x\ (\varphi \to \bot)$
+\begin{equation*}
+	\lambda f.\lambda x. \lambda \varphi .f \ (x, \varphi) 
+\end{equation*}
 \item $\exists x\ (\neg \varphi) \to \neg \forall x\ \varphi$
+
+Или, что то же самое:  $\exists x\ (\varphi \to \bot) \to \forall x\ \varphi \to \bot$
+\begin{equation*}
+	\lambda p. \lambda f. \mathbf{case} \ p \ of \ \{(x, pr) \to pr \ (f \ x)\}
+\end{equation*}
 \item $(\neg \forall x\ \varphi) \to \exists x\ (\neg \varphi)$
+
+Или, что то же самое:  $((\forall x\ \varphi) \to \bot) \to \exists x\ (\varphi \to \bot)$. Обозначим это 
+выражение как $\psi$. Предположим, что у нас есть исключённое третье. Тогда достаточно доказать, что верно $\neg 
+\neg \psi = ((((\forall x\ \varphi) \to \bot) \to \exists x\ (\varphi \to \bot)) \to \bot) \to \bot$.
+\begin{equation*}
+	\lambda f. f (\lambda f_1.\lambda p. \mathbf{case} \ p \ of \{ (x, pr) \to f_1 (\lambda x'.x') \})
+\end{equation*}
 \end{enumerate}
 
 \end{enumerate}
