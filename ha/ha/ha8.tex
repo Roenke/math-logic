@@ -6,7 +6,13 @@
     Для первых двух заданий мы предполагаем, что в сигнатуре есть предикатный символ $\leq$.
 \begin{enumerate}
 \item $\exists x \leq t\ \psi$ (``Существует $x$, меньше либо равный $t$, такой что верно $\psi$'').
+\begin{equation*}
+	\exists x \ x \leq t \land \psi(x)
+\end{equation*}
 \item $\forall x \leq t\ \psi$ (``Для любого $x$, меньше либо равного $t$, верно $\psi$'').
+\begin{equation*}
+\forall x \ x \leq t \to \psi(x)
+\end{equation*}
 \item ``Существует не менее двух элементов, удовлетворяющих $\varphi(x)$''.
 \begin{equation*}
 \exists x \exists y \ (x \neq y) \land \varphi(x) \land \varphi(y)
