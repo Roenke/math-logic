@@ -36,9 +36,10 @@
     Укажите ее тип (вам нужно будет использовать функции высшего порядка вместо расширения контекста).
     Реализуйте функции $fst'$ и $snd'$, эквивалентные обычным $fst$ и $snd$, через эту функцию.
 
-\textbf{Решение.} Если я правильно понял, что требуется, то может определись функцию $fun$, и $fst', snd'$ через неё:
+\textbf{Решение.} Если я правильно понял, что требуется, то можно определить функцию $fun$, и $fst', snd'$ через неё:
 
 \lstinputlisting[language=haskell]{ha/code/task2.hs}
+
 
 \item Пусть у нас есть несколько формул:
 \begin{enumerate}
@@ -61,6 +62,19 @@ M_2 & = \{ 13, 28 \}
 \item Докажите, что формулы $\forall x \forall y (x \neq y)$ и $\neg \exists x\ \top$ эквивалентны,
     написав лямбда терм типа $((\forall x \forall y (x \neq y)) \to \neg \exists x\ \top) \land ((\neg \exists x\ 
     \top) \to \forall x \forall y (x \neq y))$.
+    
+\textbf{Решение.} Обозначим 
+
+$t_1$ - терм типа $\forall x \forall y (x \neq y) \to \neg \exists x\ \top$. Этот тип эквивалентен $\forall x \forall y (x \neq y) \to \exists x\ \top \to \bot$ 
+\begin{equation*}
+	t_1 = \lambda f.\lambda p. \mathbf{case}\ p \ of \{ (x, \_ ) \to (f \ x)\ x \} 
+\end{equation*}
+$t_2$ - терм типа $\neg \exists x\ \top \to \forall x \forall y (x \neq y)$. Этот тип эквивалентен $(\exists x\ \top \to \bot) \to \forall x \forall y (x \neq y)$
+\begin{equation*}
+	t_2 = \lambda f. \lambda x. \lambda y. f\ (x, \top)
+\end{equation*}
+
+Итоговый терм: $t = (t_1, t_2)$.
 
 \item Пусть теория $T$ состоит из одной аксиомы $\{\,st : \exists (x : s)\ \top\,\}$.
     Пусть $x \notin FV(\varphi)$.
