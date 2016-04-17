@@ -23,7 +23,8 @@
 \end{equation*}
 \item ``Существует по крайней мере один, но не более двух элементов, удовлетворяющих $\varphi(x)$''.
 \begin{equation*}
-	\exists x \ \varphi(x) \land (\forall p \forall y \forall z \ \varphi(p) \land \varphi(y) \land \varphi(z) \to ((p = y) \lor (y = z) \lor (p = z)))
+	\exists x \ \varphi(x) \land (\forall p \forall y \forall z \ \varphi(p) \land \varphi(y) 
+	\land \varphi(z) \to ((p = y) \lor (y = z) \lor (p = z)))
 \end{equation*}
 
 \item ``Существует не более одного элемента, удовлетворяющего $\varphi(x)$''
@@ -65,13 +66,15 @@ M_2 & = \{ 13, 28 \}
     
 \textbf{Решение.} Обозначим 
 
-$t_1$ - терм типа $\forall x \forall y (x \neq y) \to \neg \exists x\ \top$. Этот тип эквивалентен $\forall x \forall y (x \neq y) \to \exists x\ \top \to \bot$ 
+$t_1$ - терм типа $\forall x \forall y (x \neq y) \to \neg \exists x\ \top$. 
+Этот тип эквивалентен $\forall x \forall y ((x = y) \to \bot) \to \exists x\ \top \to \bot$ 
 \begin{equation*}
-	t_1 = \lambda f.\lambda p. \mathbf{case}\ p \ of \{ (x, \_ ) \to (f \ x)\ x \} 
+	t_1 = \lambda f.\lambda p. \mathbf{case}\ p \ of \{ (x, pr ) \to f \ x\ x \ pr \} 
 \end{equation*}
-$t_2$ - терм типа $\neg \exists x\ \top \to \forall x \forall y (x \neq y)$. Этот тип эквивалентен $(\exists x\ \top \to \bot) \to \forall x \forall y (x \neq y)$
+$t_2$ - терм типа $\neg \exists x\ \top \to \forall x \forall y (x \neq y)$. 
+Этот тип эквивалентен $(\exists x\ \top \to \bot) \to \forall x \forall y (x \neq y)$
 \begin{equation*}
-	t_2 = \lambda f. \lambda x. \lambda y. f\ (x, \top)
+	t_2 = \lambda f. \lambda x. \lambda y.\lambda p. f\ (x, p)
 \end{equation*}
 
 Итоговый терм: $t = (t_1, t_2)$.
@@ -114,12 +117,9 @@ $t_2$ - терм типа $\neg \exists x\ \top \to \forall x \forall y (x \neq 
 	\lambda p. \lambda f. \mathbf{case} \ p \ of \ \{(x, pr) \to pr \ (f \ x)\}
 \end{equation*}
 \item $(\neg \forall x\ \varphi) \to \exists x\ (\neg \varphi)$
-
-Или, что то же самое:  $((\forall x\ \varphi) \to \bot) \to \exists x\ (\varphi \to \bot)$. Обозначим это 
-выражение как $\psi$. Предположим, что у нас есть исключённое третье. Тогда достаточно доказать, что верно $\neg 
-\neg \psi = ((((\forall x\ \varphi) \to \bot) \to \exists x\ (\varphi \to \bot)) \to \bot) \to \bot$.
+Предположим исключённое третье, тогда можно добавить условие $\exists x \varphi \lor \neg \varphi$. Осталось доказать формулу: $(\exists x \varphi \lor (\varphi\to \bot)) \to (\forall x\ \varphi \to \bot) \to \exists x\ ( \varphi \to \bot)$
 \begin{equation*}
-	\lambda f. f (\lambda f_1.\lambda p. \mathbf{case} \ p \ of \{ (x, pr) \to f_1 (\lambda x'.x') \})
+	\lambda p .\lambda f. \mathbf{case} \ p \ of \{ (x, epr) \to \mathbf{case} \ epr \ of \{ Left \ phi \to (x, (\lambda y. f (\lambda z\ phi))); Right \ negphi \to (x, negphi) \} \}
 \end{equation*}
 \end{enumerate}
 
