@@ -60,7 +60,7 @@ M_2 & = \{ 13, 28 \}
 \end{align*}
 Какие из этих формул верны в каких моделях?
 
-\item Докажите, что формулы $\forall x \forall y (x \neq y)$ и $\neg \exists x\ \top$ эквивалентны,
+\item[4.] Докажите, что формулы $\forall x \forall y (x \neq y)$ и $\neg \exists x\ \top$ эквивалентны,
     написав лямбда терм типа $((\forall x \forall y (x \neq y)) \to \neg \exists x\ \top) \land ((\neg \exists x\ 
     \top) \to \forall x \forall y (x \neq y))$.
     
@@ -69,12 +69,12 @@ M_2 & = \{ 13, 28 \}
 $t_1$ - терм типа $\forall x \forall y (x \neq y) \to \neg \exists x\ \top$. 
 Этот тип эквивалентен $\forall x \forall y ((x = y) \to \bot) \to \exists x\ \top \to \bot$ 
 \begin{equation*}
-	t_1 = \lambda f.\lambda p. \mathbf{case}\ p \ of \{ (x, pr ) \to f \ x\ x \ pr \} 
+	t_1 = \lambda f.\lambda p. \mathbf{case}\ p \ of \{ (x, pr ) \to f \ x\ x \ (refl \ x) \} 
 \end{equation*}
 $t_2$ - терм типа $\neg \exists x\ \top \to \forall x \forall y (x \neq y)$. 
-Этот тип эквивалентен $(\exists x\ \top \to \bot) \to \forall x \forall y (x \neq y)$
+Этот тип эквивалентен $(\exists x\ \top \to \bot) \to \forall x \forall y ((x = y) \to \bot)$
 \begin{equation*}
-	t_2 = \lambda f. \lambda x. \lambda y.\lambda p. f\ (x, p)
+	t_2 = \lambda f. \lambda x. \lambda y.\lambda p. f\ (x, \top)
 \end{equation*}
 
 Итоговый терм: $t = (t_1, t_2)$.
@@ -95,7 +95,7 @@ $t_2$ - терм типа $\neg \exists x\ \top \to \forall x \forall y (x \neq 
 \end{equation*}
 \end{enumerate}
 
-\item Докажите, что следующие формулы выводимы (в пустой теории), написав лямбда термы, доказывающие их.
+\item[6.] Докажите, что следующие формулы выводимы (в пустой теории), написав лямбда термы, доказывающие их.
     Исключенное третье можно (и нужно) использовать только в последнем пункте.
 \begin{enumerate}
 \item $(\forall x\ (\neg \varphi)) \to \neg \exists x\ \varphi$
@@ -116,8 +116,8 @@ $t_2$ - терм типа $\neg \exists x\ \top \to \forall x \forall y (x \neq 
 \begin{equation*}
 	\lambda p. \lambda f. \mathbf{case} \ p \ of \ \{(x, pr) \to pr \ (f \ x)\}
 \end{equation*}
-\item $(\neg \forall x\ \varphi) \to \exists x\ (\neg \varphi)$
-Предположим исключённое третье, тогда можно добавить условие $\exists x \varphi \lor \neg \varphi$. Осталось доказать формулу: $(\exists x \varphi \lor (\varphi\to \bot)) \to (\forall x\ \varphi \to \bot) \to \exists x\ ( \varphi \to \bot)$
+\item[(d)] $(\neg \forall x\ \varphi) \to \exists x\ (\neg \varphi)$
+Предположим исключённое третье, тогда можно добавить условие $\exists  x \ \varphi \lor \neg \varphi$. Осталось доказать формулу: $(\exists x\ \varphi \lor (\varphi\to \bot)) \to (\forall x\ \varphi \to \bot) \to \exists x\ ( \varphi \to \bot)$
 \begin{equation*}
 	\lambda p .\lambda f. \mathbf{case} \ p \ of \{ (x, epr) \to \mathbf{case} \ epr \ of \{ Left \ phi \to (x, (\lambda y. f (\lambda z\ phi))); Right \ negphi \to (x, negphi) \} \}
 \end{equation*}
