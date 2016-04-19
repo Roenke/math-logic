@@ -1,0 +1,127 @@
+\section*{Логика первого порядка}
+
+\begin{enumerate}
+
+\item Определите формулы, удовлетворяющие следующим описаниям.
+    Для первых двух заданий мы предполагаем, что в сигнатуре есть предикатный символ $\leq$.
+\begin{enumerate}
+\item $\exists x \leq t\ \psi$ (``Существует $x$, меньше либо равный $t$, такой что верно $\psi$'').
+\begin{equation*}
+	\exists x \ x \leq t \land \psi(x)
+\end{equation*}
+\item $\forall x \leq t\ \psi$ (``Для любого $x$, меньше либо равного $t$, верно $\psi$'').
+\begin{equation*}
+\forall x \ x \leq t \to \psi(x)
+\end{equation*}
+\item ``Существует не менее двух элементов, удовлетворяющих $\varphi(x)$''.
+\begin{equation*}
+\exists x \exists y \ (x \neq y) \land \varphi(x) \land \varphi(y)
+\end{equation*}
+\item ``Существует ровно два элемента, удовлетворяющие $\varphi(x)$''.
+\begin{equation*}
+	\exists x \exists y \ (x \neq y) \land \varphi(x) \land \varphi(y) \land (\forall z \ \varphi(z) \to (z = x \lor z = y))
+\end{equation*}
+\item ``Существует по крайней мере один, но не более двух элементов, удовлетворяющих $\varphi(x)$''.
+\begin{equation*}
+	\exists x \ \varphi(x) \land (\forall p \forall y \forall z \ \varphi(p) \land \varphi(y) 
+	\land \varphi(z) \to ((p = y) \lor (y = z) \lor (p = z)))
+\end{equation*}
+
+\item ``Существует не более одного элемента, удовлетворяющего $\varphi(x)$''
+\begin{equation*}
+	\forall x \forall y \ (\varphi(x) \land \varphi(y) \to (x = y)
+\end{equation*}
+\end{enumerate}
+
+\item Напишите на хаскелле функцию, аналогичную конструкции $\mathbf{case}$ для пар, используя $fst$ и $snd$.
+    Укажите ее тип (вам нужно будет использовать функции высшего порядка вместо расширения контекста).
+    Реализуйте функции $fst'$ и $snd'$, эквивалентные обычным $fst$ и $snd$, через эту функцию.
+
+\textbf{Решение.} Если я правильно понял, что требуется, то можно определить функцию $fun$, и $fst', snd'$ через неё:
+
+\lstinputlisting[language=haskell]{ha/code/task2.hs}
+
+
+\item Пусть у нас есть несколько формул:
+\begin{enumerate}
+\item \label{it:no} $x \neq y$ -- $\{M_0\}$
+\item \label{it:e} $\exists x (x \neq y)$ -- $\{M_2\}$
+\item \label{it:a} $\forall x (x \neq y)$ -- $\{M_0\}$
+\item \label{it:ee} $\exists x \exists y (x \neq y)$ -- $\{M_2\}$
+\item \label{it:ea} $\exists x \forall y (x \neq y)$ -- $\{\}$
+\item \label{it:ae} $\forall x \exists y (x \neq y)$ -- $\{M_2\}$
+\item \label{it:aa} $\forall x \forall y (x \neq y)$ -- $\{M_0\}$
+\end{enumerate}
+И несколько интерпретаций:
+\begin{align*}
+M_0 & = \varnothing \\
+M_1 & = \{ 7 \} \\
+M_2 & = \{ 13, 28 \}
+\end{align*}
+Какие из этих формул верны в каких моделях?
+
+\item[4.] Докажите, что формулы $\forall x \forall y (x \neq y)$ и $\neg \exists x\ \top$ эквивалентны,
+    написав лямбда терм типа $((\forall x \forall y (x \neq y)) \to \neg \exists x\ \top) \land ((\neg \exists x\ 
+    \top) \to \forall x \forall y (x \neq y))$.
+    
+\textbf{Решение.} Обозначим 
+
+$t_1$ - терм типа $\forall x \forall y (x \neq y) \to \neg \exists x\ \top$. 
+Этот тип эквивалентен $\forall x \forall y ((x = y) \to \bot) \to \exists x\ \top \to \bot$ 
+\begin{equation*}
+	t_1 = \lambda f.\lambda p. \mathbf{case}\ p \ of \{ (x, pr ) \to f \ x\ x \ (refl \ x) \} 
+\end{equation*}
+$t_2$ - терм типа $\neg \exists x\ \top \to \forall x \forall y (x \neq y)$. 
+Этот тип эквивалентен $(\exists x\ \top \to \bot) \to \forall x \forall y ((x = y) \to \bot)$
+\begin{equation*}
+	t_2 = \lambda f. \lambda x. \lambda y.\lambda p. f\ (x, \top)
+\end{equation*}
+
+Итоговый терм: $t = (t_1, t_2)$.
+
+\item Пусть теория $T$ состоит из одной аксиомы $\{\,st : \exists (x : s)\ \top\,\}$.
+    Пусть $x \notin FV(\varphi)$.
+    Тогда докажите, что следующие формулы являются теоремами этой теории.
+    Приведите и дерево вывода, и лямбда терм, доказывающие эти формулы.
+\begin{enumerate}
+\item $\varphi \land (\forall x\ \psi) \to \forall x\ (\varphi \land \psi)$ (эта формула выводима и в пустой 
+теории)
+\begin{equation*}
+	\lambda p. \mathbf{case} \ p \ of \{ (phi, f) \to \lambda x.(phi, f \ x) \}
+\end{equation*}
+\item $(\forall x\ (\varphi \land \psi)) \to \varphi \land (\forall x\ \psi)$
+\begin{equation*}
+	\lambda f. \mathbf{case} \ st \ of \{ (phi, psi) \to (f\ phi, \lambda x. snd \ (f \ x)) \}
+\end{equation*}
+\end{enumerate}
+
+\item[6.] Докажите, что следующие формулы выводимы (в пустой теории), написав лямбда термы, доказывающие их.
+    Исключенное третье можно (и нужно) использовать только в последнем пункте.
+\begin{enumerate}
+\item $(\forall x\ (\neg \varphi)) \to \neg \exists x\ \varphi$
+
+Или, что то же самое: $\forall x\ (\varphi \to \bot) \to \exists x\ \varphi \to \bot$
+\begin{equation*}
+	\lambda f.\lambda p. \mathbf{case} \ p \ of \ \{(x, pr) \to (f \ x) \ pr\}
+\end{equation*}
+\item $(\neg \exists x\ \varphi) \to \forall x\ (\neg \varphi)$
+
+Или, что то же самое:  $((\exists x\ \varphi) \to \bot) \to \forall x\ (\varphi \to \bot)$
+\begin{equation*}
+	\lambda f.\lambda x. \lambda \varphi .f \ (x, \varphi) 
+\end{equation*}
+\item $\exists x\ (\neg \varphi) \to \neg \forall x\ \varphi$
+
+Или, что то же самое:  $\exists x\ (\varphi \to \bot) \to \forall x\ \varphi \to \bot$
+\begin{equation*}
+	\lambda p. \lambda f. \mathbf{case} \ p \ of \ \{(x, pr) \to pr \ (f \ x)\}
+\end{equation*}
+\item[(d)] $(\neg \forall x\ \varphi) \to \exists x\ (\neg \varphi)$
+Предположим исключённое третье, тогда можно добавить условие $\exists  x \ \varphi \lor \neg \varphi$. Осталось доказать формулу: $(\exists x\ \varphi \lor (\varphi\to \bot)) \to (\forall x\ \varphi \to \bot) \to \exists x\ ( \varphi \to \bot)$
+\begin{equation*}
+	\lambda p .\lambda f. \mathbf{case} \ p \ of \{ (x, epr) \to \mathbf{case} \ epr \ of \{ Left \ phi \to (x, (\lambda y. f (\lambda z\ phi))); Right \ negphi \to (x, negphi) \} \}
+\end{equation*}
+\end{enumerate}
+
+\end{enumerate}
+
