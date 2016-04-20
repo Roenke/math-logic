@@ -92,6 +92,30 @@ y) = 0 \to S(x) = 0 \land y = 0$, или что то же самое $\bot \to (
 исходное утверждение.
 
 \item $\forall x \forall y\ (x \cdot y = 0 \to x = 0 \lor y = 0)$.
+
+\textbf{Решение.} 
+
+Обозначим $\varphi(x) = \forall y x \cdot y = 0 \to x = 0 \lor y = 0)$. Для доказательства этого утверждения 
+достаточно показать, что верно $\varphi(0)$ и $\forall x (\varphi(x) \to \varphi(S(x))$.
+
+$\varphi(0):$ 
+\begin{equation*}
+(\forall y \ 0 \cdot y = 0 \to 0 = 0 \lor y = 0) \to (\forall y [y = 0 \to \top]) \to \top 
+\end{equation*}
+Выполнено.
+
+Покажем второй пункт  $\forall x \ \varphi(x) \to \varphi(S(x))$:
+\begin{equation*}
+\forall x (\forall y [x \cdot y = 0 \to x = 0 \lor y = 0] \to \forall y [S(x) \cdot y = 0 \to S(x) = 0 \lor y = 0])
+\end{equation*}
+
+Рассмотрим выражение $S(x) \cdot y = 0 \to S(x) = 0 \lor y = 0$, Заметим, что оно преобразуется к виду $y + xy = 0 \to S(x) = 0 \lor y = 0$. Воспользуемся первым пунктом, тогда вместо этого выражения достаточно доказать: $y = 0 \land xy = 0 \to S(x) = 0 \lor y = 0$. Заметим, что это действительно так: 
+\begin{equation*}
+(y = 0 \land xy = 0) \to (y = 0) \to (S(x) = 0 \lor y = 0)
+\end{equation*}
+
+Значит верным является и $\forall x \ \varphi(x) \to \varphi(S(x))$, что вместе с $\varphi(0)$ доказывает 
+исходное утверждение.
 \end{enumerate}
 
 \item Докажите коммутативность сложения.
