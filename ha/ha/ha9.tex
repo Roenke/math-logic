@@ -32,6 +32,26 @@ pred(S(x)) & = x
 \end{align*}
 то в ней будет доказуема формула $\forall x \forall y\ (x + y = x +' y)$.
 
+\textbf{Решение.} 
+
+Чтобы доказать эту формулу (обозначим её $\varphi(x) = \forall y\ (x + y = x +' y)$). Нам достаточно показать, что $\varphi(0)$ верно, и $\forall x \ \varphi(x) \to \varphi(S(x))$. Покажем, что это действительно так.
+
+$\varphi(0):$ 
+\begin{equation*}
+	\forall y \ (0 + y = 0 +' y) \to \forall y \ (y = y)
+\end{equation*}
+Выполнено.
+
+Покажем второй пункт  $\forall x \ \varphi(x) \to \varphi(S(x))$:
+\begin{equation*}
+	\forall x (\forall y (x + y = x +' y) \to \forall y (S(x) + y = S(x) +' y))
+\end{equation*}
+Преобразуем $S(x) + y = S(x) +' y$:
+\begin{equation*}
+	S(x) + y = S(x) +' y \to S(x + y) = S(x +' y) \to x + y = x +' y
+\end{equation*}
+По индукционному предположению, последнее выражение верно, поэтому всё доказано.
+
 \item Добавим в сигнатуру функциональные символы $exp$ и $fac$ для функций возведения в степень и факториала
 соответственно.
     Напишите аксиомы для этих функциональных символов, определяющие их уникальным образом.
@@ -43,7 +63,6 @@ pred(S(x)) & = x
 		fac \ 0 &= S(0) \\
 		fac \ S(x) &= S(x) \cdot fac\ x
 	\end{align*}
-	
 
 \item Докажите следующие свойства:
 \begin{enumerate}
