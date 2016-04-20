@@ -67,6 +67,30 @@ $\varphi(0):$
 \item Докажите следующие свойства:
 \begin{enumerate}
 \item $\forall x \forall y\ (x + y = 0 \to x = 0 \land y = 0)$.
+
+\textbf{Решение.} 
+
+Обозначим $\varphi(x) = \forall y (x + y = 0 \to x = 0 \land y = 0)$. Для доказательства этого утверждения 
+достаточно показать, что верно $\varphi(0)$ и $\forall x (\varphi(x) \to \varphi(S(x))$.
+
+$\varphi(0):$ 
+\begin{equation*}
+\forall y \ ((0 + y = 0) \to (0 = 0 \land y = 0)) \to \forall (y = 0 \to y = 0)
+\end{equation*}
+Выполнено.
+
+Покажем второй пункт  $\forall x \ \varphi(x) \to \varphi(S(x))$:
+\begin{equation*}
+\forall x (\forall y [x + y = 0 \to x = 0 \land y = 0] \to \forall y [S(x) + y = 0 \to  = S(x) = 0 \land y = 0])
+\end{equation*}
+
+Рассмотрим выражение $S(x) + y = 0 \to  = S(x) = 0 \land y = 0$, Заметим, что оно преобразуется к виду $S(x + 
+y) = 0 \to S(x) = 0 \land y = 0$, или что то же самое $\bot \to (S(x) = 0 \land y = 0)$. Которое очевидно 
+верно, т.к. из $\bot$ может следовать любое утверждение. 
+
+Значит верным является и $\forall x \ \varphi(x) \to \varphi(S(x))$, что вместе с $\varphi(0)$ доказывает 
+исходное утверждение.
+
 \item $\forall x \forall y\ (x \cdot y = 0 \to x = 0 \lor y = 0)$.
 \end{enumerate}
 
