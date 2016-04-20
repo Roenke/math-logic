@@ -24,6 +24,15 @@ pred(S(x)) & = x
 соответственно.
     Напишите аксиомы для этих функциональных символов, определяющие их уникальным образом.
 
+	\textbf{Решение.}
+	\begin{align*}
+		x \ exp \ 0 &= S(0)\\
+		x \ exp \ S(y) &= x \cdot (x \ exp\ y) \\ 
+		fac \ 0 &= S(0) \\
+		fac \ S(x) &= S(x) \cdot fac\ x
+	\end{align*}
+	
+
 \item Докажите следующие свойства:
 \begin{enumerate}
 \item $\forall x \forall y\ (x + y = 0 \to x = 0 \land y = 0)$.
