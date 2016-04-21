@@ -13,16 +13,31 @@ pred(S(x)) & = x
 Докажите, что $\forall x \exists! y (\varphi(x,y))$
 
 \textbf{Решение.}
-\begin{align*}
-	\varphi(0, y) &= 0 = y \\
-	\varphi(S(x), y) &= x = y
-\end{align*}
 
-Утверждение $\forall x \exists! y (\varphi(x,y))$ следует из единственности элементов:
-\begin{align*}
-	\forall &x \ 0 \neq S(x)\\
-	\forall &x \forall y \ S(x) = S(y) \to x = y
-\end{align*}
+Определим $\varphi(x, y)$ следующим образом:
+\begin{equation*}
+	\varphi(x, y) = [(x = 0 \land y = 0) \lor (x = S(y))]
+\end{equation*}
+
+Докажем для него утверждение $\psi(x) = \exists! y \ \varphi(x, y)$
+
+Сделаем это по индукции:
+\begin{itemize}
+	\item База индукции $\psi(0)$
+	\begin{equation*}
+		\psi(0) = \exists! y \ [\varphi(0, y)] = \exists! y \ [((0 = 0 \land y = 0) \lor 0 = S(x))] = \exists! y \ [(\top \land y = 0) \lor \bot] = \exists! y\ [y = 0]
+	\end{equation*} 
+	В силу уникальности $y = 0$ утверждение доказано.
+	\item Индукционный переход. Допустим, мы знаем, что верно $\psi(x) = \exists! y \varphi(x, y)$. Покажем, что верно $\psi(S(x))$
+	\begin{align*}
+		\psi(S(x)) = &\exists! z \ [(\varphi(S(x), z))] = \exists! z \ [(S(x) = 0 \land z = 0) \lor (S(x) = S(z))]\\
+		&\exists! z \ [(\bot \land z = 0) \lor (S(x) = S(z))] = \exists! z \ [(S(x) = S(z)] = \exists! z \ [x = z]
+	\end{align*}
+	
+	Опять же, в силу уникальности $z = x$ утверждение доказано, а вместе с ним и индукция для $\psi(x)$. 
+	
+	
+\end{itemize}
 
 \item Докажите, что аксиомы для сложения определяют его уникальным образом.
     То есть если мы добавим в сигнатуру новый функциональный символ $+'$ и новые аксиомы
