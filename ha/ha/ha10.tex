@@ -44,6 +44,23 @@
 & max(S(x), y) = y + sub(S(x), y)
 \end{align*}
 \item Докажите, что $\forall x \forall y\ (min(x,y) \leq max(x,y))$, где $a \leq b$ означает $\exists c\ (a + c = b)$.
+
+\textbf{Решение.} Докажем утверждение $\varphi(x) =  \forall y\ (min(x,y) \leq max(x,y))$ по индукции:
+\begin{itemize}
+	\item База. $\varphi(0) = \forall y \ (min(0,y) \leq max(0,y))$. Или, $\forall y \ 0 \leq y$. Заметим, что 
+	$\forall y \exists c = y \ \left[ 0 + y = y\right]$.
+	\item Переход. $\forall y\ (min(x,y) \leq max(x,y)) \to \forall y\ (min(S(x),y) \leq max(S(x),y))$. 
+	Утверждение $\forall y\ (min(S(x),y) \leq max(S(x),y))$ докажем по индукции по $y$ (предположение индукции 
+	даёт нам $\forall y\exists c \ min(x,y) + c = max(x,y)$): 
+	\begin{itemize}
+		\item База $min(S(x),0) \leq max(S(x),0)$. Можем вычислить: $0 \leq S(x)$, значит $\exists \hat{c} = S(x) 
+		\ 0 + \hat{c} = S(x)$
+		\item Переход. $min(S(x),S(y)) \leq max(S(x),S(y))$, вычислим: $S(min(x,y)) \leq S(max(x,y))$. Это 
+		значит: $\exists \tilde{c} : S(min(x, y)) + \tilde{c} = S(max(x, y))$, вычислим левую часть: $\exists 
+		\tilde{c} : S(min(x, y) + \tilde{c}) = S(max(x, y))$. Воспользуемся $pred$, получим $\exists \tilde{c} : 
+		min(x, y) + \tilde{c} = max(x, y)$. А такое $\tilde{c}$ у нас уже есть: $\tilde{c} = c$.
+	\end{itemize}
+\end{itemize}
 \end{enumerate}
 
 \item Пусть в $PRCPA$ у нас есть функции $+$ и $+'$, определённые следующим образом:
@@ -60,7 +77,8 @@
 
 \textbf{Решение.} Докажем утверждение $\varphi(x) = \forall y \ (x + y = x +' y)$ по индукции.
 \begin{itemize}
-	\item База: $\varphi(0) = \forall y \ 0 + y = 0 +' y$. Вместо этого достаточно показать, что $y = 0 +' y$. Это можем показать по индукции:
+	\item База: $\varphi(0) = \forall y \ 0 + y = 0 +' y$. Вместо этого достаточно показать, что $y = 0 +' y$. 
+	Это можем показать по индукции:
 	\begin{itemize}
 		\item База $0 = 0 +' 0 = 0$ - Верно.
 		\item Индукционный переход $y = 0 +' y \to S(y) = 0 +' S(y)$
@@ -71,7 +89,9 @@
 		\end{align*}
 		Доказано.
 	\end{itemize}
-	\item Покажем индукционный переход $S(x) + y = S(x) +' y$. Заметим, что $S(x) + y = S(x + y) = S(x +' y) = x +' S(y)$. Значит будет достаточно показать, что $x +' S(y) = S(x) +' y$. Сделаем это так же по индукции по $y$.
+	\item Покажем индукционный переход $S(x) + y = S(x) +' y$. Заметим, что $S(x) + y = S(x + y) = S(x +' y) = x 
+	+' S(y)$. Значит будет достаточно показать, что $x +' S(y) = S(x) +' y$. Сделаем это так же по индукции по 
+	$y$.
 	\begin{itemize}
 		\item База $y = 0$. $x +' S(0) = S(x) +' 0$. Это верно по рефлексивности.
 		\item Переход. Пусть верно $x +' S(y) = S(x) +' y$, покажем, что верно $x +' S(S(y)) = S(x) +' S(y)$.
