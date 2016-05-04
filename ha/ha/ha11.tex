@@ -1,0 +1,37 @@
+\section*{Теория множеств}
+
+\begin{enumerate}
+
+\item Докажите, что отношение $\subseteq$ является частичным порядком. Какие аксиомы при этом необходимо 
+использовать?
+
+\item Мы говорили, что $\in$-индукция влечет тот факт, что не существует бесконечной последовательности множеств 
+$\ldots \in x_2 \in x_1 \in x_0$.
+    Докажите при помощи $\in$-индукции следующие частные случаи этого утверждения:
+\begin{enumerate}
+\item Отношение $\in$ иррефлексивно.
+\item Не существует $x$ и $y$, таких что $x \in y$ и $y \in x$.
+\end{enumerate}
+
+\item Докажите следующие свойства натуральных чисел:
+\begin{enumerate}
+\item $\forall x \in \mathbb{N} (x = 0 \lor \exists y \in \mathbb{N} (x = S(y)))$.
+\item Используя предыдущий пункт и следующий принцип индукции
+\[ (\forall x \in \mathbb{N}\ (\forall y < x\ \varphi(y)) \to \varphi(x)) \to \forall x \in \mathbb{N}\ \varphi(x), 
+\]
+докажите обычный принцип индукции для натуральных чисел:
+\[ \varphi(0) \land (\forall y \in \mathbb{N}\ \varphi(y) \to \varphi(S(y))) \to \forall x \in \mathbb{N}\ 
+\varphi(x), \]
+\end{enumerate}
+
+\item Докажите следующие свойства натуральных чисел (hint: каждый следующий пункт следует из предыдущего):
+\begin{enumerate}
+\item Если $S(x) < S(y)$, то $x < y$.
+\item $x < y$ тогда и только тогда, когда $S(x) \leq y$.
+\item Отношение $\in$ транзитивно на элементах $\mathbb{N}$.
+    Можно показать более общее утверждение: если $x \in y \in z \in \mathbb{N}$, то $x \in z$.
+\item Если $x \in y$ и $y \in \mathbb{N}$, то $x \in \mathbb{N}$.
+\end{enumerate}
+
+\end{enumerate}
+
