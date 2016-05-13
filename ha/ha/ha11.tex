@@ -5,6 +5,17 @@
 \item Докажите, что отношение $\subseteq$ является частичным порядком. Какие аксиомы при этом необходимо 
 использовать?
 
+\textbf{Решение.} Покажем рефлексивность, транзитивность и антисимметричность.
+\begin{itemize}
+	\item Рефлексивность. $a \subseteq a$. Нужно $\forall z \ (z \in a \to z \in a)$. Это утверждение верное.
+	\item Транзитивность. $a \subseteq b \land b \subseteq c \to a \subseteq c$. Покажем, что $\forall z \ z \in a \to z \in c$. 
+	\begin{itemize}
+		\item $\forall z \ (z \in a \to z \in b)$. Воспользуемся $b \subseteq c$: $(\forall z \ (z \in a \to z \in b 
+		\to z \in c)) \to \forall z \ (z \in a \to z \in c)$.
+	\end{itemize}
+	\item Антисимметричность. $\forall x\forall y (x \subseteq y \land y \subseteq x \to x = y)$. Это аксиома 
+	экстенсиональности.
+\end{itemize}
 \item Мы говорили, что $\in$-индукция влечет тот факт, что не существует бесконечной последовательности множеств 
 $\ldots \in x_2 \in x_1 \in x_0$.
     Докажите при помощи $\in$-индукции следующие частные случаи этого утверждения:
