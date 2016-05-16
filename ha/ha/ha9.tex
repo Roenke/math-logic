@@ -25,12 +25,15 @@ pred(S(x)) & = x
 \begin{itemize}
 	\item База индукции $\psi(0)$
 	\begin{equation*}
-		\psi(0) = \exists! y \ [\varphi(0, y)] = \exists! y \ [((0 = 0 \land y = 0) \lor 0 = S(x))] = \exists! y \ [(\top \land y = 0) \lor \bot] = \exists! y\ [y = 0]
+		\psi(0) = \exists! y \ [\varphi(0, y)] = \exists! y \ [((0 = 0 \land y = 0) \lor 0 = S(x))] = \exists! y 
+		\ [(\top \land y = 0) \lor \bot] = \exists! y\ [y = 0]
 	\end{equation*} 
 	В силу уникальности $y = 0$ утверждение доказано.
-	\item Индукционный переход. Допустим, мы знаем, что верно $\psi(x) = \exists! y \varphi(x, y)$. Покажем, что верно $\psi(S(x))$
+	\item Индукционный переход. Допустим, мы знаем, что верно $\psi(x) = \exists! y \varphi(x, y)$. Покажем, что 
+	верно $\psi(S(x))$
 	\begin{align*}
-		\psi(S(x)) = &\exists! z \ [(\varphi(S(x), z))] = \exists! z \ [(S(x) = 0 \land z = 0) \lor (S(x) = S(z))]\\
+		\psi(S(x)) = &\exists! z \ [(\varphi(S(x), z))] = \exists! z \ [(S(x) = 0 \land z = 0) \lor (S(x) = 
+		S(z))]\\
 		&\exists! z \ [(\bot \land z = 0) \lor (S(x) = S(z))] = \exists! z \ [(S(x) = S(z)] = \exists! z \ [x = z]
 	\end{align*}
 	
@@ -49,7 +52,8 @@ pred(S(x)) & = x
 
 \textbf{Решение.} 
 
-Чтобы доказать эту формулу (обозначим её $\varphi(x) = \forall y\ (x + y = x +' y)$). Нам достаточно показать, что $\varphi(0)$ верно, и $\forall x \ \varphi(x) \to \varphi(S(x))$. Покажем, что это действительно так.
+Чтобы доказать эту формулу (обозначим её $\varphi(x) = \forall y\ (x + y = x +' y)$). Нам достаточно показать, 
+что $\varphi(0)$ верно, и $\forall x \ \varphi(x) \to \varphi(S(x))$. Покажем, что это действительно так.
 
 $\varphi(0):$ 
 \begin{equation*}
@@ -124,7 +128,9 @@ $\varphi(0):$
 \forall x (\forall y [x \cdot y = 0 \to x = 0 \lor y = 0] \to \forall y [S(x) \cdot y = 0 \to S(x) = 0 \lor y = 0])
 \end{equation*}
 
-Рассмотрим выражение $S(x) \cdot y = 0 \to S(x) = 0 \lor y = 0$, Заметим, что оно преобразуется к виду $y + xy = 0 \to S(x) = 0 \lor y = 0$. Воспользуемся первым пунктом, тогда вместо этого выражения достаточно доказать: $y = 0 \land xy = 0 \to S(x) = 0 \lor y = 0$. Заметим, что это действительно так: 
+Рассмотрим выражение $S(x) \cdot y = 0 \to S(x) = 0 \lor y = 0$, Заметим, что оно преобразуется к виду $y + xy = 
+0 \to S(x) = 0 \lor y = 0$. Воспользуемся первым пунктом, тогда вместо этого выражения достаточно доказать: $y = 
+0 \land xy = 0 \to S(x) = 0 \lor y = 0$. Заметим, что это действительно так: 
 \begin{equation*}
 (y = 0 \land xy = 0) \to (y = 0) \to (S(x) = 0 \lor y = 0)
 \end{equation*}
@@ -187,4 +193,3 @@ $\varphi(0):$
 Таким образом, сложение коммутативно.
 
 \end{enumerate}
-
