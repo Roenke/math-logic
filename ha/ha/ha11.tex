@@ -22,13 +22,14 @@ $\ldots \in x_2 \in x_1 \in x_0$.
 \begin{enumerate}
 \item Отношение $\in$ иррефлексивно.
 \item Не существует $x$ и $y$, таких что $x \in y$ и $y \in x$.
-\end{enumerate}
+\end{enumerate} 
 
 \item Докажите следующие свойства натуральных чисел:
 \begin{enumerate}
 \item $\forall x \in \mathbb{N} (x = 0 \lor \exists y \in \mathbb{N} (x = S(y)))$.
 \item Используя предыдущий пункт и следующий принцип индукции
-\[ (\forall x \in \mathbb{N}\ (\forall y < x\ \varphi(y)) \to \varphi(x)) \to \forall x \in \mathbb{N}\ \varphi(x), 
+\[ 
+(\forall x \in \mathbb{N}\ (\forall y < x\ \varphi(y)) \to \varphi(x)) \to \forall x \in \mathbb{N}\ \varphi(x), 
 \]
 докажите обычный принцип индукции для натуральных чисел:
 \[ \varphi(0) \land (\forall y \in \mathbb{N}\ \varphi(y) \to \varphi(S(y))) \to \forall x \in \mathbb{N}\ 
@@ -44,17 +45,17 @@ $\ldots \in x_2 \in x_1 \in x_0$.
 Нужно показать, что $\left[x \cup \{x\} \in y \cup \{y\}\right] \to x \in y$. Рассмотрим возможные случаи:
 \begin{itemize}
 	\item $x \cup \{x\} = y$. Из этого сразу следует, что $x \in y$.
-	\item $x \cup \{x\} \in y$. Теперь воспользуемся тем, что нам известна структура $y$. Т.е. если $x \cup \{x\} \in 
-	y$, то $x \in y$.
+	\item $x \cup \{x\} \in y$. Теперь воспользуемся тем, что нам известна структура $y$. Т.е. если $x \cup \{x\} 
+	\in	y$, то $x \in y$.
 \end{itemize}
 \item $x < y$ тогда и только тогда, когда $S(x) \leq y$.
 
 \textbf{Решение.}
 \begin{itemize}
 	\item $\Leftarrow$ доказано на лекции.
-	\item $\Rightarrow$ Нужно показать, что $x \in y \to x \cup \{x\} \subseteq y$. Или, что то же самое, $x \in y \to 
-	\forall z \ (z \in x \cup \{x\} \to z \in y)$. При $z = x$ это верно, т.к. $x < y$. Остался случай, когда $z \in 
-	x$. Заметим, что $x < y \to x \leq y \to \forall z (z \in x \to z \in y)$.
+	\item $\Rightarrow$ Нужно показать, что $x \in y \to x \cup \{x\} \subseteq y$. Или, что то же самое, $x \in 
+	y \to \forall z \ (z \in x \cup \{x\} \to z \in y)$. При $z = x$ это верно, т.к. $x < y$. Остался случай, 
+	когда $z \in x$. Заметим, что $x < y \to x \leq y \to \forall z (z \in x \to z \in y)$.
 \end{itemize}
 
 \item Отношение $\in$ транзитивно на элементах $\mathbb{N}$.
